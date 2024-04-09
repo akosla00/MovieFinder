@@ -3,27 +3,21 @@ const movieListContainer = document.querySelector('#movie-list-container')
 
 
 
-
-function searchMovie () {
-    const url = 'https://imdb146.p.rapidapi.com/v1/find/?query=robot';
+function searchMovie() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '21f6497c22mshcec9eab44f70c4ap10a2e3jsn8657e78becfa',
-            'X-RapidAPI-Host': 'imdb146.p.rapidapi.com'
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MDA2YjZiMTA4ZTlkYzk4NTRkMzNiZWU3M2JmZTUwMSIsInN1YiI6IjY2MTU5M2FhMTVhNGExMDE0YWY3ZTM5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9GPo1YyE3aDYpIfjnQjt_1vO4ZuQId0pH1v0TYhhdK4'
         }
     };
-    
-    fetch(url, options)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data){
-            titleResults(data);
-        })
-}
 
-function titleResults (data) {
+    fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+}
+function titleResults(data) {
     const movieArray = data.titleResults.results;
     console.log(movieArray);
 
