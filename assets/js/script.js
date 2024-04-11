@@ -1,5 +1,5 @@
 const movieListContainer = document.querySelector('#movie-list-container')
-
+let genre = document.querySelector('#movie-category')
 
 
 
@@ -14,17 +14,19 @@ function searchMovie() {
 
     fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => titleResults(response))
         .catch(err => console.error(err));
 }
+
 function titleResults(data) {
-    const movieArray = data.titleResults.results;
+    const movieArray = data.results;
     console.log(movieArray);
 
     for (i = 0; i < movieArray.length; i++) {
         console.log("Card is being made");
-        const image = movieArray[i].titlePosterImageModel.url;
-        const movieTitle = movieArray[i].titleNameText;
+        const imageLocation = movieArray[i].poster_path;
+        const movieTitle = movieArray[i].original_title;
+        const image = `https://media.themoviedb.org/t/p/w300_and_h450_bestv2` + imageLocation
 
         // This is the CARD
         const card = document.createElement("div");
@@ -50,6 +52,7 @@ function titleResults(data) {
 
 
 }
+
 
 // try {
 // 	const response = await fetch(url, options);
