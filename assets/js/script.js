@@ -1,9 +1,9 @@
-const movieListContainer = document.querySelector('#movie-list-container')
-let genre = document.querySelector('#movie-category')
+const movieListContainer = document.querySelector('#movie-list-container');
+let genre = document.querySelector('#movie-category');
+const popularMovieList = document.querySelector('#popular-movie-list');
 
 
-
-function searchMovie() {
+function loadMovie() {
     const options = {
         method: 'GET',
         headers: {
@@ -47,12 +47,15 @@ function titleResults(data) {
         cardBody.append(p);
 
         card.append(img, cardBody);
-        movieListContainer.append(card)
+        popularMovieList.append(card)
     }
 
 
 }
 
+$(document).ready(function () {
+    window.onload = loadMovie();
+});
 
 // try {
 // 	const response = await fetch(url, options);
