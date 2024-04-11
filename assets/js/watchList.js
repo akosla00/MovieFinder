@@ -1,6 +1,7 @@
 // The point of this code is to display the movie we have saved in local storage
 // How does it work?
-// Gets an Array of Object with movie
+// Gets an Array of Object and then displays it with displayMovies function
+// TODO: Still need to save movies into local storage with the key name "savedMovieList"
 
 
 // This variable calls the local saved
