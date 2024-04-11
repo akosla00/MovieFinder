@@ -1,6 +1,8 @@
 const movieListContainer = document.querySelector('#movie-list-container');
 let genre = document.querySelector('#movie-category');
 const popularMovieList = document.querySelector('#popular-movie-list');
+const omdbUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
+const searchFormEl = document.querySelector('#search-form');
 
 
 function loadMovie() {
@@ -12,7 +14,7 @@ function loadMovie() {
         }
     };
 
-    fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+    fetch(omdbUrl, options)
         .then(response => response.json())
         .then(response => titleResults(response))
         .catch(err => console.error(err));
@@ -53,14 +55,24 @@ function titleResults(data) {
 
 }
 
+function searchMovie(event) {
+    event.preventDefault();
+
+    const searchInputVal = document.querySelector('#movie-search').value;
+    const genreVal = genre.value;
+
+    if (!searchInputVal) {
+        console.error('Search can not be empty!');
+        return;
+    }
+
+    const queryString = omdbUrl + `&with_genres=${genreVal}`;
+    console.log(queryString);
+}
+
+searchFormEl.addEventListener('submit', searchMovie);
+
+
 $(document).ready(function () {
     window.onload = loadMovie();
 });
-
-// try {
-// 	const response = await fetch(url, options);
-// 	const result = await response.text();
-// 	console.log(result);
-// } catch (error) {
-// 	console.error(error);
-// }
