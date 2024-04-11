@@ -55,22 +55,31 @@ function titleResults(data) {
 
 }
 
-function searchMovie(event) {
+function moviesByGenre(event) {
     event.preventDefault();
 
-    const searchInputVal = document.querySelector('#movie-search').value;
     const genreVal = genre.value;
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MDA2YjZiMTA4ZTlkYzk4NTRkMzNiZWU3M2JmZTUwMSIsInN1YiI6IjY2MTU5M2FhMTVhNGExMDE0YWY3ZTM5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9GPo1YyE3aDYpIfjnQjt_1vO4ZuQId0pH1v0TYhhdK4'
+        }
+    };
 
-    if (!searchInputVal) {
-        console.error('Search can not be empty!');
-        return;
-    }
+
 
     const queryString = omdbUrl + `&with_genres=${genreVal}`;
-    console.log(queryString);
+
+    fetch(queryString, options)
+        .then(response => response.json())
+        .then(response => titleResults(response))
+        .catch(err => console.error(err));
+
+
 }
 
-searchFormEl.addEventListener('submit', searchMovie);
+searchFormEl.addEventListener('submit', moviesByGenre);
 
 
 $(document).ready(function () {
