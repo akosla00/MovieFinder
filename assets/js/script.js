@@ -58,6 +58,8 @@ function titleResults(data) {
 function moviesByGenre(event) {
     event.preventDefault();
 
+    $('div').remove('.card');
+
     const genreVal = genre.value;
     const options = {
         method: 'GET',
