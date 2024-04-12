@@ -19,4 +19,5 @@ function fetchMovieID (event) {
 
 }
 
+// This runs of page load
 fetchMovieID();
