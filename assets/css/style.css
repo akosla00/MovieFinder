@@ -4,18 +4,14 @@ body {
 
 h1{
     text-align: center;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "gravitas one";
     font-weight: bold;
-    background-color: rgb(255, 60, 0); 
     padding: 10px 20px; 
     display: inline-block; 
     transition: box-shadow 0.3s; 
     border-radius: 5px; 
+    color: rgba(121, 65, 65, 0.568);
 }
-
-h1:hover {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
-} 
 
 #populer-movie-list {
     display: flex;
@@ -24,20 +20,64 @@ h1:hover {
 }
 
 .card {
-    width: 200px; 
-    margin: 10px; 
-    padding: 10px; 
-    border-radius: 5px; 
-    background-color: #f9f9f9; 
+    width: 200px;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ecf8fa;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s; /
+    transition: box-shadow 0.3s, transform 0.3s; 
 }
 
 .card:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px); 
+}
+ 
+h2{
+    text-align: center;
+    font-family: "gravitas one";
+    font-weight: bold;
+    padding: 10px 20px; 
+    display: inline-block; 
+    transition: box-shadow 0.3s; 
+    border-radius: 5px; 
+    color: rgba(121, 65, 65, 0.568)
 }
 
-#background{
-    background-color: antiquewhite !important ;
+
+#background {
+    background: linear-gradient(135deg, rgba(255, 178, 102, 1) 0%, rgba(255, 102, 102, 1) 50%, rgba(102, 51, 153, 1) 100%);
+}
+
+
+.navbar-brand{
+    font-family:honk ; 
+    background-color: rgba(14, 14, 14, 0.979); 
+    border-radius: 12px;
+    padding: 10px;  
+}
+
+.card-text {
+    background-color: rgb(255, 255, 255);
+    border-radius: 22px;
+    padding: 10px;
+    position: relative;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.card-body{
+    position:absolute ;
+    top: -40px;
+}
+.card-text::after {
+    content: '\25B6'; 
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease; 
+    
+}
+
+.card-text:hover::after {
+    transform: translate(-50%, -50%) scale(1); 
 }
 
