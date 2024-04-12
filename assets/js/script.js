@@ -1,8 +1,10 @@
 const movieListContainer = document.querySelector('#movie-list-container');
 let genre = document.querySelector('#movie-category');
 const popularMovieList = document.querySelector('#popular-movie-list');
-const omdbUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
+const omdbGenreUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 const searchFormEl = document.querySelector('#search-form');
+const searchBarEl = document.querySelector('#search-bar');
+let title = document.querySelector('#movie-title');
 
 
 function loadMovie() {
@@ -14,7 +16,7 @@ function loadMovie() {
         }
     };
 
-    fetch(omdbUrl, options)
+    fetch(omdbGenreUrl, options)
         .then(response => response.json())
         .then(response => titleResults(response))
         .catch(err => console.error(err));
@@ -69,19 +71,39 @@ function moviesByGenre(event) {
         }
     };
 
-
-
-    const queryString = omdbUrl + `&with_genres=${genreVal}`;
+    const queryString = omdbGenreUrl + `&with_genres=${genreVal}`;
 
     fetch(queryString, options)
         .then(response => response.json())
         .then(response => titleResults(response))
         .catch(err => console.error(err));
 
+}
 
+function moviesByTitle(event) {
+    event.preventDefault();
+
+    $('div').remove('.card');
+
+    const titleVal = title.value;
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MDA2YjZiMTA4ZTlkYzk4NTRkMzNiZWU3M2JmZTUwMSIsInN1YiI6IjY2MTU5M2FhMTVhNGExMDE0YWY3ZTM5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9GPo1YyE3aDYpIfjnQjt_1vO4ZuQId0pH1v0TYhhdK4'
+        }
+    };
+
+    const queryString = `https://api.themoviedb.org/3/search/movie?query=${titleVal}&include_adult=false&language=en-US&page=1`
+
+    fetch(queryString, options)
+        .then(response => response.json())
+        .then(response => titleResults(response))
+        .catch(err => console.error(err));
 }
 
 searchFormEl.addEventListener('submit', moviesByGenre);
+searchBarEl.addEventListener('submit', moviesByTitle);
 
 
 $(document).ready(function () {
