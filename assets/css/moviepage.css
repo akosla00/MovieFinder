@@ -1,0 +1,40 @@
+/* The movie background */
+#movie-hero {
+    background-image: attr(data-movie-banner);
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+/* The movie background fade */
+#movie-hero::after {
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to left, transparent 0%, rgb(5, 5, 5) 100%);
+    margin-top: 0px;
+    height: 100%;
+    width: 100%;
+    content: '';
+  }
+
+/* This brings the text above dark gradient */
+/* This is the place where you */
+#movie-hero div {
+    color: white;
+    z-index: 2;
+}
+
+#movie-banner {
+    background-color: attr(data-image);
+}
+
+#image-container {
+    width: 250px;
+    margin: auto;
+}
+
+#movie-poster {
+    width: 100%;
+}
