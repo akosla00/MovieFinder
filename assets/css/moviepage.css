@@ -26,10 +26,6 @@
     z-index: 2;
 }
 
-#movie-banner {
-    background-color: attr(data-image);
-}
-
 #image-container {
     width: 250px;
     margin: auto;
