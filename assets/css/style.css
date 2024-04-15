@@ -24,8 +24,8 @@ h1{
     margin: 15px;
     padding: 10px;
     border-radius: 5px;
-    background-color: #ecf8fa;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #6e737760;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.678);
     transition: box-shadow 0.3s, transform 0.3s; 
 }
 
@@ -47,8 +47,77 @@ h2{
 
 
 #background {
-    background: linear-gradient(135deg, rgba(255, 178, 102, 1) 0%, rgba(255, 102, 102, 1) 50%, rgba(102, 51, 153, 1) 100%);
+    background: linear-gradient(90deg, rgba(51, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 51, 1) 100%);
 }
+
+
+
+.navbar {
+    display: inline !important;
+
+    
+} 
+
+.navbar-navbar-light-bg-light{
+    display: inline  !important;
+  
+} 
+#watch-list{
+    background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+  
+}
+
+#watch-list:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  }
+/* this is the search bar itself */
+.collapse.navbar-collapse #movie-title {
+    background-color: #d4b9b9;
+    padding: 1px; 
+}
+
+
+/* this is the box around the search bar  */
+#search-bar {
+    background: linear-gradient(to right, #1e1e71, #3a3a69); /* Complementary darker gradient */
+    border-radius: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    margin-top: 15px;
+    padding: 10px; 
+    margin-left: 15px; 
+    margin-right: 15px;
+}
+
+/*  button inside of the seach box "search by title" */
+#search-bar .form-inline {
+    display: flex;
+    align-items: center; 
+    padding: 5px 10px;
+    margin: right 50px; ;
+}
+
+
+
+
+
 
 
 .navbar-brand{
@@ -56,10 +125,11 @@ h2{
     background-color: rgba(14, 14, 14, 0.979); 
     border-radius: 12px;
     padding: 10px;  
+    
 }
 
 .card-text {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(190, 167, 160);
     border-radius: 22px;
     padding: 10px;
     position: relative;
@@ -68,13 +138,6 @@ h2{
 .card-body{
     position:absolute ;
     top: -40px;
-}
-.card-text::after {
-    content: '\25B6'; 
-    position: absolute;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.3s ease; 
-    
 }
 
 .card-text:hover::after {
