@@ -21,7 +21,7 @@ function titleResults(data) {
     card.setAttribute("class", "card");
     card.setAttribute("style", "width: 18rem;");
     card.setAttribute('data-movie-id', movieId);
-    // card.setAttribute('onClick', "sendMovieIdToLocalStorage(this)");
+    card.setAttribute('onClick', "sendMovieIdToLocalStorage(this)");
 
     const img = document.createElement("img");
     img.setAttribute("src", image);
@@ -37,12 +37,9 @@ function titleResults(data) {
     const btn = document.createElement('button');
     btn.setAttribute('id', 'delete-btn');
     btn.setAttribute('class', 'btn btn-danger delete d-block');
-    btn.setAttribute('onClick', "deleteFromWatchList(this)");
+    btn.setAttribute('onClick', "deleteFromWatchList(event)");
     btn.setAttribute('data-id', movieId);
     btn.textContent = 'Remove from Watch List';
-    btn.addEventListener('click', function () {
-        card.remove();
-    })
 
     p.append(btn);
 
@@ -99,15 +96,17 @@ function sendMovieIdToLocalStorage(event) {
 }
 
 function deleteFromWatchList(event) {
-    const btnClick = event.dataset.id;
+    event.stopPropagation();
+    console.log(event);
+    const btnClick = event.srcElement.attributes[3].value;
     console.log(btnClick);
     for (let i = 0; i < savedMovieList.length; i++) {
         if (savedMovieList[i] === btnClick) {
             const updatedWatchList = savedMovieList.slice(0, i).concat(savedMovieList.slice(i + 1));
             console.log(updatedWatchList);
-
             localStorage.setItem('watchList', JSON.stringify(updatedWatchList));
+            location.reload();
         }
-
+        
     }
 }
