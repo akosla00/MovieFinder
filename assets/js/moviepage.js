@@ -41,7 +41,7 @@ function displayMovieInfo (data) {
 
 
     // This is testing
-    console.log(movieRating);
+
 
     // This sets the background
     const movieBanner = document.querySelector("#movie-hero");
@@ -80,5 +80,99 @@ function listGenre (data) {
 }
 
 
+// TMDB video fetch
+// Step #1
+function fetchMovieVideo () {
+    const movieId = movieLS;
+    const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MDA2YjZiMTA4ZTlkYzk4NTRkMzNiZWU3M2JmZTUwMSIsInN1YiI6IjY2MTU5M2FhMTVhNGExMDE0YWY3ZTM5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9GPo1YyE3aDYpIfjnQjt_1vO4ZuQId0pH1v0TYhhdK4'
+    }
+  };
+  
+  fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US?type=trailer`, options)
+    .then(response => response.json())
+    .then(response => filterMovieVideos(response))
+    .catch(err => console.error(err));
+}
+
+// Step #4
+let youtubeVideoId = '';
+
+// Step #2
+function filterMovieVideos (data) {
+    const movieVideosArray = data.results;
+    const order = ['Behind the Scenes', 'Clip', 'Featurette', 'Teaser', 'Trailer'];
+    const reorderedArray = movieVideosArray.sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type));
+    // For Testing
+    console.log(movieVideosArray);
+    
+      for (let i = movieVideosArray.length - 1; i >= 0; i--) {
+        if (movieVideosArray[i].type === 'Trailer' && movieVideosArray[i].name === 'Official Trailer') {
+            const movieKey = movieVideosArray[i].key;
+            return youtubeVideoId = movieKey;
+        } else if (movieVideosArray[i].type === 'Trailer') {
+            const movieKey = movieVideosArray[i].key;
+            return youtubeVideoId = movieKey;
+        } else if (movieVideosArray[i].type === 'Teaser') {
+            const movieKey = movieVideosArray[i].key;
+            return youtubeVideoId = movieKey;
+        }
+        
+    }  
+    
+}
+
+// Step #5
+// Youtube
+var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '506',
+          width: '900',
+          videoId: youtubeVideoId,
+          playerVars: {
+            'playsinline': 1
+          },
+          events: {
+            // 'onReady': onPlayerReady,
+            // 'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 0);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+
+
+
 // This runs of page load
 fetchMovieID();
+fetchMovieVideo();
