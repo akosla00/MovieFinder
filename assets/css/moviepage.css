@@ -34,3 +34,108 @@
 #movie-poster {
     width: 100%;
 }
+
+
+#background {
+    background: linear-gradient(90deg, rgba(51, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 51, 1) 100%) !important;
+}
+
+.navbar {
+    display: inline !important; 
+} 
+/* moviefinder title */
+.navbar-brand{
+    font-family:honk ; 
+    background-color: rgba(14, 14, 14, 0.979); 
+    border-radius: 12px;
+    padding: 10px;  
+    margin-top: 5px;
+    
+}
+/* this is the back button */
+#go-back{
+    background-color: #1827ff;
+}
+
+.container-fluid{
+    margin-bottom: 20px;
+}
+
+#youtube-trailer {
+    background: #e62143;
+    border-radius: 11px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: "Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+    font-size: 1.15em;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 33.4929px;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+    text-underline-offset: 1px;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 50%;
+    word-break: break-word;
+    border: 0;
+  }
+  
+  #youtube-trailer:hover {
+    background-color: #d2143c; 
+  }
+  
+  #youtube-trailer:active {
+    transform: translateY(6px); 
+  }
+  
+  #add-watch-list {
+    background: linear-gradient(to bottom right, #1827ff, #2b2726); 
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    margin-top: 10px;
+  } 
+
+  #add-watch-list:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(161, 0, 32, 0.5), .125rem .125rem 1rem rgba(231, 76, 60, 0.5); /* Adjust hover shadow colors */
+  }
+  
+
+#movie-poster {
+    margin-top: 40px ;
+}
+
+
+.row{
+    background-color: #111111;
+    margin-top:2px; 
+    color: rgba(10, 218, 255, 0.514);
+
+} 
+
+#genre-list {
+    color: rgb(224, 224, 224);
+  } 
+
+  ul {
+    list-style: none;
+  }
+
+  
