@@ -1,5 +1,5 @@
 // This variable calls the local saved
-const savedMovieList = JSON.parse(localStorage.getItem('watchList'));
+let savedMovieList = JSON.parse(localStorage.getItem('watchList'));
 // This is the location it will parse too
 const displayWatchList = document.querySelector('#movie-watch-list');
 const deleteBtn = document.querySelector('#delete-btn');
@@ -21,7 +21,7 @@ function titleResults(data) {
     card.setAttribute("class", "card");
     card.setAttribute("style", "width: 18rem;");
     card.setAttribute('data-movie-id', movieId);
-    card.setAttribute('onClick', "sendMovieIdToLocalStorage(this)")
+    card.setAttribute('onClick', "sendMovieIdToLocalStorage(this)");
 
     const img = document.createElement("img");
     img.setAttribute("src", image);
@@ -31,16 +31,15 @@ function titleResults(data) {
     cardBody.setAttribute('class', "card-body");
 
     const p = document.createElement("p");
-    p.setAttribute('class', 'card-text');
+    p.setAttribute('class', 'card-text d-block');
     p.textContent = movieTitle;
 
     const btn = document.createElement('button');
     btn.setAttribute('id', 'delete-btn');
-    btn.setAttribute('class', 'btn btn-danger delete')
+    btn.setAttribute('class', 'btn btn-danger delete d-block');
+    btn.setAttribute('onClick', "deleteFromWatchList(event)");
+    btn.setAttribute('data-id', movieId);
     btn.textContent = 'Remove from Watch List';
-    btn.onclick = function () {
-        removeMovie(movieId);
-    };
 
     p.append(btn);
 
@@ -76,3 +75,38 @@ function fetchMovieID() {
 
 }
 
+function sendMovieIdToLocalStorage(event) {
+    console.log(event)
+    const movieId = event.dataset.movieId;
+
+    if (localStorage.getItem('movieId') !== null) {
+        let movieKey = localStorage.getItem('movieId');
+        movieKey = movieId;
+        localStorage.setItem('movieId', movieKey);
+        console.log("This ran 1");
+    } else {
+        let emptyMovieId = 0;
+        emptyMovieId = movieId;
+        localStorage.setItem('movieId', emptyMovieId);
+        console.log("This ran 2");
+    }
+
+    var myWindow = window.open("moviepage.html", "_self");
+    myWindow
+}
+
+function deleteFromWatchList(event) {
+    event.stopPropagation();
+    console.log(event);
+    const btnClick = event.srcElement.attributes[3].value;
+    console.log(btnClick);
+    for (let i = 0; i < savedMovieList.length; i++) {
+        if (savedMovieList[i] === btnClick) {
+            const updatedWatchList = savedMovieList.slice(0, i).concat(savedMovieList.slice(i + 1));
+            console.log(updatedWatchList);
+            localStorage.setItem('watchList', JSON.stringify(updatedWatchList));
+            location.reload();
+        }
+        
+    }
+}
