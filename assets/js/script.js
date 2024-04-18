@@ -3,7 +3,8 @@ let genre = document.querySelector('#movie-category');
 const popularMovieList = document.querySelector('#popular-movie-list');
 const omdbGenreUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 const searchFormEl = document.querySelector('#search-form');
-const searchBarEl = document.querySelector('#search-bar');
+const searchBarEl = document.querySelector('.search-bar');
+const togglerEl = document.querySelector('.navbar-toggler');
 let title = document.querySelector('#movie-title');
 
 
@@ -114,21 +115,11 @@ $(document).ready(function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
 // Gio was working here last
 const tempMovieCardTestButton = document.querySelector('#movieCardClick');
 // This WILL be the data-movie-id attach to the movie click event
 
-function sendMovieIdToLocalStorage (event) {
+function sendMovieIdToLocalStorage(event) {
     console.log(event)
     const movieId = event.dataset.movieId;
 
@@ -147,3 +138,7 @@ function sendMovieIdToLocalStorage (event) {
     var myWindow = window.open("moviepage.html", "_self");
     myWindow
 }
+
+togglerEl.addEventListener('click', function () {
+    searchBarEl.classList.toggle('search-bar');
+})
