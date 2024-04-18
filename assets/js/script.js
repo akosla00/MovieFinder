@@ -39,7 +39,6 @@ function titleResults(data) {
         card.setAttribute("style", "width: 18rem;");
         card.setAttribute('data-movie-id', movieId);
         card.setAttribute('onClick', "sendMovieIdToLocalStorage(this)")
-        // card.addEventListener('click', sendMovieIdToLocalStorage);
 
         const img = document.createElement("img");
         img.setAttribute("src", image);
@@ -132,7 +131,7 @@ const tempMovieCardTestButton = document.querySelector('#movieCardClick');
 function sendMovieIdToLocalStorage (event) {
     console.log(event)
     const movieId = event.dataset.movieId;
-    
+
     if (localStorage.getItem('movieId') !== null) {
         let movieKey = localStorage.getItem('movieId');
         movieKey = movieId;

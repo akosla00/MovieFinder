@@ -51,7 +51,6 @@ h2{
 }
 
 
-
 .navbar {
     display: inline !important;
 
@@ -115,25 +114,20 @@ h2{
 }
 
 
-
-
-
-
-
-.navbar-brand{
-    font-family:honk ; 
-    background-color: rgba(14, 14, 14, 0.979); 
+.navbar-brand {
+    font-family: honk;
+    background-color: rgba(14, 14, 14, 0.979);
     border-radius: 12px;
-    padding: 10px;  
-    
+    padding: 10px;
 }
 
 .card-text {
-    background-color: rgb(190, 167, 160);
-    border-radius: 22px;
-    padding: 10px;
+    background-color: rgb(151, 161, 147);
+    border-radius: 12px;
+    padding: 12px;
     position: relative;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
 }
 .card-body{
     position:absolute ;
