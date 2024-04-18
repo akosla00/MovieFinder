@@ -20,3 +20,6 @@ Movie finder is your one stop shop for all your movie needs. You can search for 
 <img width="1268" alt="MFscreenshot2" src="https://github.com/akosla00/MovieFinder/assets/160931306/496cb9af-bd4d-40e3-b19e-644663b66905">
 <img width="1277" alt="MFscreenshot3" src="https://github.com/akosla00/MovieFinder/assets/160931306/25760f34-7651-427d-be04-2502ba5c7fb5">
 <img width="1268" alt="MFscreenshot4" src="https://github.com/akosla00/MovieFinder/assets/160931306/55774a21-a24e-4cc4-af54-0254386bfb05">
+## Contact
+- 
+- https://twitter.com/Lyoko_0
