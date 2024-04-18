@@ -144,3 +144,11 @@ h2{
     transform: translate(-50%, -50%) scale(1); 
 }
 
+footer{
+color:white;
+background-color: rgb(13, 9, 26, 0.5);
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+padding: 15px;
+border-radius: 12px;
+
+}
